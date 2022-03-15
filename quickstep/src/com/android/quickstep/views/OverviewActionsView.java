@@ -142,6 +142,8 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         mMultiValueAlpha.setUpdateVisibility(true);
 
         findViewById(R.id.action_screenshot).setOnClickListener(this);
+        findViewById(R.id.action_clear_all).setOnClickListener(this);
+
         mSplitButton = findViewById(R.id.action_split);
         mSplitButton.setOnClickListener(this);
 
@@ -179,11 +181,13 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         if (mCallbacks == null) {
             return;
         }
-        int id = view.getId();
+        final int id = view.getId();
         if (id == R.id.action_screenshot) {
             mCallbacks.onScreenshot();
         } else if (id == R.id.action_split) {
             mCallbacks.onSplit();
+        } else if (id == R.id.action_clear_all) {
+            mCallbacks.onClearAllTasksRequested();
         } else if (id == R.id.action_lens) {
             mCallbacks.onLens();
         }
